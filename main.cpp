@@ -1,8 +1,11 @@
 #include <iostream>
 #include <cstdio>
 
+#define SAMPLE 39450
+
 // Algorithms
 #include "./binary-search/binary-search.cpp"
+#include "./linear-search/linear-search.cpp"
 
 // Dataset
 #include "./dataset/dataset.cpp"
@@ -19,19 +22,29 @@ std::vector<int> numbers = dataset.generate(); // { 0, 1 ... 999, 1000 }
 
 int main(void)
 {
-    BinarySearch search(numbers);
+    BinarySearch bin_s(numbers);
+    LinearSearch lin_s(numbers);
 
     printf("Dataset size: %d elements\n\n", DATASET_SIZE);
     printf("Performance:\n");
 
     // Binary search
-    auto t1 = high_resolution_clock::now();
-    search.run(39450);
-    auto t2 = high_resolution_clock::now();
+    auto bin_s_t1 = high_resolution_clock::now();
+    bin_s.run(SAMPLE);
+    auto bin_s_t2 = high_resolution_clock::now();
 
-    auto bin_s_measure = duration_cast<milliseconds>(t2 - t1).count();
+    auto bin_s_measure = duration_cast<milliseconds>(bin_s_t2 - bin_s_t1).count();
 
     printf("Binary search: %lldms\n", bin_s_measure);
+
+    // Linear search
+    auto lin_s_t1 = high_resolution_clock::now();
+    lin_s.run(SAMPLE);
+    auto lin_s_t2 = high_resolution_clock::now();
+
+    auto lin_s_measure = duration_cast<milliseconds>(lin_s_t2 - lin_s_t1).count();
+
+    printf("Linear search: %lldms\n", lin_s_measure);
 
     return 0;
 }
