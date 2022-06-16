@@ -1,3 +1,5 @@
+![Icon](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+
 # Searching algorithms in C++
 
 This projects main focus is thrown on measuring performance of different searching and filtering algorithms that are used on large datasets. Size of dataset can be configured but it defaults to 10,000,000 items. Algorithms used:
